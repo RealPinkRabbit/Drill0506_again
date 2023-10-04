@@ -85,11 +85,13 @@ def update_world():
         if t <= 1.0:
             cx = (1 - t) * sx + t * hx  # cx는 시작 x와 끝 x를 1-t:t 비율로 섞은 위치
             cy = (1 - t) * sy + t * hy  # cy는 시작 y와 끝 y를 1-t:t 비율로 섞은 위치
-            t += 0.001
+            t += 0.003
         else:   # 목표지정에 도달하면
             cx, cy = hx, hy # 캐릭터 위치를 기존 목적지 위치와 강제로 정확히 일치시킴
             del points[0]   #목표지점에 왔기 때문에, 더 이상 필요없는 점을 삭제
             set_new_target_arrow()
+    elif points:    # 목표 지점이 없는 상황에서, 새로운 목표 지점이 생기면...
+        set_new_target_arrow()
 
 
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
